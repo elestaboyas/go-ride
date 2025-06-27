@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Request a Ride</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="pickup_location">Pickup Location:</label>
+        <input type="text" name="pickup_location" id="pickup_location" required>
+
+        <label for="dropoff_location">Dropoff Location:</label>
+        <input type="text" name="dropoff_location" id="dropoff_location" required>
+
+        <button type="submit" class="button">Submit Ride Request</button>
+    </form>
+{% endblock %}

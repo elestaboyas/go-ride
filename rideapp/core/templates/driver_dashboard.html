@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Driver Dashboard – Available Rides</h2>
+
+    {% if rides %}
+        <ul>
+            {% for ride in rides %}
+                <li>
+                    <strong>Pickup:</strong> {{ ride.pickup_location }}<br>
+                    <strong>Dropoff:</strong> {{ ride.dropoff_location }}<br>
+
+                    <div class="button-group">
+                        <form method="post" action="{% url 'accept_ride' ride.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="button btn-complete">Accept</button>
+                        </form>
+
+                        <form method="post" action="{% url 'deny_ride' ride.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="button btn-danger">Deny</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No ride requests at the moment.</p>
+    {% endif %}
+{% endblock %}

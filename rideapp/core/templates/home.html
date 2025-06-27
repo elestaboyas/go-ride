@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Welcome to <span style="color:#007bff;">Go</span><span style="color:#000;">Ride</span></h2>
+
+    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+        Go Ride is your trusted ride-booking service. Request a ride, track your history,
+        or manage rides as a driver — all in one place.
+    </p>
+
+    <div class="button-group">
+        <a href="{% url 'request_ride' %}">
+            <button class="button">Request a Ride</button>
+        </a>
+
+        <a href="{% url 'rider_history' %}">
+            <button class="button">My Ride History</button>
+        </a>
+
+        <a href="{% url 'driver_dashboard' %}">
+            <button class="button btn-danger">Driver Dashboard</button>
+        </a>
+    </div>
+{% endblock %}

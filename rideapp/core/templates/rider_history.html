@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>My Ride History</h2>
+
+    {% if rides %}
+        <ul>
+            {% for ride in rides %}
+                <li>
+                    <strong>Pickup:</strong> {{ ride.pickup_location }}<br>
+                    <strong>Dropoff:</strong> {{ ride.dropoff_location }}<br>
+                    <strong>Status:</strong> 
+                    {% if ride.status == 'completed' %}
+                        <span style="color:green;">Completed</span>
+                    {% elif ride.status == 'denied' %}
+                        <span style="color:red;">Denied</span>
+                    {% else %}
+                        <span style="color:orange;">{{ ride.status|title }}</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You haven't taken any rides yet.</p>
+    {% endif %}
+{% endblock %}

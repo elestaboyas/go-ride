@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>My Accepted Rides</h2>
+
+    {% if rides %}
+        <ul>
+            {% for ride in rides %}
+                <li>
+                    <strong>Pickup:</strong> {{ ride.pickup_location }}<br>
+                    <strong>Dropoff:</strong> {{ ride.dropoff_location }}<br>
+                    <strong>Status:</strong> 
+                    {% if ride.status == 'completed' %}
+                        <span style="color:green;">Completed</span>
+                    {% else %}
+                        <span style="color:orange;">{{ ride.status|title }}</span>
+                    {% endif %}
+
+                    {% if ride.status == 'accepted' %}
+                        <form method="post" action="{% url 'complete_ride' ride.id %}" style="margin-top: 10px;">
+                            {% csrf_token %}
+                            <button type="submit" class="button btn-complete">Mark as Completed</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You haven't accepted any rides yet.</p>
+    {% endif %}
+{% endblock %}

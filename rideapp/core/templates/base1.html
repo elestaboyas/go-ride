@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Go Ride</title>
+    <style>
+        /* Base Reset & Layout */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        header h1 .go {
+            color: #ffffff;
+        }
+
+        header h1 .ride {
+            color: #000000;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #e6f0ff;
+            padding: 0.7rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content */
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .button,
+        a button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover,
+        a button:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .btn-complete {
+            background-color: #28a745;
+        }
+
+        .btn-complete:hover {
+            background-color: #218838;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        /* Form Styling */
+        form {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            margin-top: 0.5rem;
+        }
+
+        /* List Items */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .sign-up-buttom {
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #e6f0ff;
+            color: #333;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            position: static;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><span class="go">Go</span><span class="ride">Ride</span></h1>
+</header>
+
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'driver_dashboard' %}">Requested Rides</a>
+    <a href="{% url 'driver_rides' %}">Driver Rides</a>
+</nav>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    &copy; 2025 Go Ride. All rights reserved.
+</footer>
+
+</body>
+</html>
